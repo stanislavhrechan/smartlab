@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ config('app.name', 'Laravel') }}</title>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="bg-[#FDFDFC]">
-        <h1 class="text-8xl uppercase">Smartlab hlavna</h1>
-    </body>
-</html>
+@extends('layouts.home')
+@section('SmartLab')
+@section('content')
+    <x-home.hero-section/>
+    <x-home.about-section/>
+@endsection
