@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', function () {
-    return view('home.about');
-});
+// Route::('/about', function() {
+//     return view('home.about');
+// });
 
 Route::get('/rezervation/rooms', function () {
     return view('rezervations.index');

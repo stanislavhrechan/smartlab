@@ -7,9 +7,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="bg-[#FDFDFC]">
-        <x-header/>
+        <x-header/> 
         <main>
             @yield('content')
         </main>
+        <div class="h-2 bg-[#2F938D] w-full rounded-b-full mb-10"></div>
+        <x-footer/>
     </body>
 </html>

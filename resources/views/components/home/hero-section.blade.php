@@ -64,7 +64,7 @@
     <div class="absolute bottom-10 left-0 w-full">
         <div class="flex justify-between items-end w-full px-10">
             <div>
-                <h1 class="text-8xl font-semibold tracking-[1%] leading-[100%] text-[#031831]">
+                <h1 class="text-8xl font-dm font-bold tracking-[1%] leading-[100%] text-[#031831]">
                     Objav Svet<br/>
                     <span class="underline decoration-7 text-[#2F938D] font-dm font-bold">Informatiky</span> v Praxi.
                 </h1>
