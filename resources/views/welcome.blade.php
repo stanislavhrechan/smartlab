@@ -6,3 +6,5 @@
     <x-home.projects-section/>
     <x-home.podujatia-section/>
 @endsection
+
+//kokot
