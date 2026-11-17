@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <title>Podujatia | SmartLab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-site">
+  <header class="site-header">
+    <nav class="nav container" aria-label="Hlavná navigácia">
+      <a class="brand" href="index.html"><img class="brand-logo" src="assets/smartlab-logo.png" alt="SmartLab UCM &amp; Trnava"></a>
+      <div class="links" id="site-links">
+        <a href="index.html">Domov</a>
+        <a href="o-smart.html">O SmartLabe</a>
+        <a href="aktuality.html">Aktuality</a>
+        <a href="projekty.html">Projekty</a>
+        <a class="is-active" href="podujatia.html" aria-current="page">Podujatia</a>
+        <a href="partneri.html">Partneri</a>
+        <a href="kontakty.html">Kontakt</a>
+        <a href="studenti.html">Študenti</a>
+        <a class="links-login" href="/prihlasenie/">Prihlásiť</a>
+      </div>
+      <a class="btn btn-ink btn-small btn-login" href="/prihlasenie/">Prihlásiť</a>
+      <button class="menu-button" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="site-links">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-inner container">
+        <div>
+          <p class="eyebrow">SmartLab UCM &amp; Trnava</p>
+          <h1>Podujatia a udalosti</h1>
+          <p class="lead">Pozrite si naše nadchádzajúce podujatia, workshopy a konferencie.</p>
+        </div>
+        <span class="page-hero-art" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <section class="events-page">
+      <div class="events-layout container">
+        <aside class="filters panel" aria-label="Filtre podujatí">
+          <h2 class="panel-title">Filtre</h2>
+          <div class="field">
+            <label for="filter-date">Dátum</label>
+            <select id="filter-date" data-filter="date">
+              <option value="all">Všetky</option>
+              <option value="upcoming">Nadchádzajúce</option>
+              <option value="past">Minulé</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filter-form">Forma</label>
+            <select id="filter-form" data-filter="form">
+              <option value="all">Všetky formy</option>
+              <option value="Vzdelávacie aktivity">Vzdelávacie aktivity</option>
+              <option value="Výskum a odborné aktivity">Výskum a odborné aktivity</option>
+              <option value="Inovačné a aplikačné aktivity">Inovačné a aplikačné aktivity</option>
+              <option value="Networking a spolupráca">Networking a spolupráca</option>
+              <option value="Popularizačné a verejné aktivity">Popularizačné a verejné aktivity</option>
+              <option value="Práca s mladými talentmi">Práca s mladými talentmi</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filter-audience">Cieľová skupina</label>
+            <select id="filter-audience" data-filter="audience">
+              <option value="all">Všetky skupiny</option>
+              <option value="studenti">Študenti</option>
+              <option value="verejnost">Verejnosť</option>
+              <option value="firmy">Firmy</option>
+              <option value="samosprava">Samospráva</option>
+              <option value="akademici">Akademici</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filter-partner">Partner</label>
+            <select id="filter-partner" data-filter="partner">
+              <option value="all">Všetci partneri</option>
+            </select>
+          </div>
+          <button class="btn btn-ghost btn-small" type="button" data-filter-reset hidden>Zrušiť filtre</button>
+        </aside>
+
+        <div class="events-main">
+          <section class="panel" aria-label="Kalendár podujatí">
+            <div class="calendar-head">
+              <h2 class="panel-title calendar-title" aria-live="polite"></h2>
+              <div class="calendar-nav">
+                <button type="button" data-calendar-nav="-1" aria-label="Predchádzajúci mesiac">‹</button>
+                <button type="button" data-calendar-nav="1" aria-label="Nasledujúci mesiac">›</button>
+              </div>
+            </div>
+            <div class="calendar-weekdays" aria-hidden="true"><span>Po</span><span>Ut</span><span>St</span><span>Št</span><span>Pi</span><span>So</span><span>Ne</span></div>
+            <div class="calendar-grid" role="grid"></div>
+            <div class="legend">
+              <p class="legend-title">Legendy</p>
+              <span class="legend-item"><span class="legend-swatch cat-1"></span>Vzdelávacie aktivity</span>
+              <span class="legend-item"><span class="legend-swatch cat-2"></span>Výskum a odborné aktivity / Networking a spolupráca</span>
+              <span class="legend-item"><span class="legend-swatch cat-3"></span>Inovačné a aplikačné aktivity</span>
+              <span class="legend-item"><span class="legend-swatch cat-4"></span>Popularizačné a verejné aktivity</span>
+              <span class="legend-item"><span class="legend-swatch cat-5"></span>Práca s mladými talentmi</span>
+            </div>
+          </section>
+
+          <section  aria-labelledby="event-list-title">
+            <div class="event-list-head">
+              <h2 id="event-list-title" class="panel-title">Zoznam podujatí</h2>
+            </div>
+            <ul class="event-list"></ul>
+            <div class="empty-state" role="status">
+              <h3>Žiadne podujatia</h3>
+              <p data-empty-text>Zatiaľ nie sú naplánované žiadne podujatia.</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h2>SmartLab UCM &amp; Trnava</h2>
+          <p class="footer-copy">SmartLab je spoločný projekt Univerzity sv. Cyrila a Metoda v Trnave a mesta Trnava, zameraný na rozvoj digitálnych inovácií a spolupráce medzi akademickým prostredím, samosprávou a praxou.</p>
+          <div class="partners" id="partners">
+            <a class="partner" href="https://www.ucm.sk/" target="_blank" rel="noopener">UCM</a>
+            <a class="partner" href="https://fpv.ucm.sk" target="_blank" rel="noopener">FPV UCM</a>
+            <a class="partner" href="https://www.trnava.sk/" target="_blank" rel="noopener">Mesto Trnava</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h3>Rýchle odkazy</h3>
+          <a href="projekty.html">Projekty <span>↗</span></a>
+          <a href="podujatia.html">Podujatia <span>↗</span></a>
+          <a href="partneri.html">Partneri <span>↗</span></a>
+          <a href="kontakty.html">Kontakt <span>↗</span></a>
+        </div>
+        <address class="contact">
+          <h3>Kontakt</h3>
+          <a class="contact-email" href="mailto:patrik.borsos@ucm.sk">patrik.borsos@ucm.sk ↗</a>
+          <p>Hlavná 5, 917 01 Trnava</p>
+          <a class="text-link" href="kontakty.html#ako-nas-najdete">Kde nás nájdete? Pozrite si obrázkového sprievodcu vstupu do SmartLabu.</a>
+        </address>
+      </div>
+      <div class="copyright">
+        <span>© 2026 SmartLab UCM &amp; Trnava. Všetky práva vyhradené.</span>
+        <strong>UCM × Mesto Trnava</strong>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
