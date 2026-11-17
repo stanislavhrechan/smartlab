@@ -1,5 +1,5 @@
-<section class="flex flex-col mt-20 min-h-screen mx-10">
-    <div class="flex justify-between items-end">
+<section class="flex flex-col mt-40 min-h-screen">
+    <div class="flex justify-between items-end mx-10">
         <div class="space-y-5">
             <span class="font-semibold">01 - 04</span>
             <h2 class="text-8xl font-dm font-bold tracking-[1%] leading-[100%] text-[#031831]">
@@ -20,5 +20,60 @@
             </a>
         </div>
     </div>
-    
+    <div class="flex gap-5 mt-10 overflow-hidden ml-10">
+        <div class="w-[50vw] h-[55vh] bg-orange-300 rounded-3xl flex justify-between">
+            <div class="p-5 w-[550px] flex flex-col justify-between">
+                <h3 class="text-3xl font-dm font-bold tracking-[1%] leading-[120%] text-[#031831]">
+                    SmartLab Talks: Prezentuj tak, aby ťa počuli
+                </h3>
+                <div class="space-y-5">
+                    <p class="leading-[100%] text-[#031831] mb-5">
+                        Ako zaujať publikum už od prvých sekúnd a prezentovať tak, aby si tvoje myšlienky skutočne zapamätalo? Na druhom podujatí zo série SmartLab Talks privítame Ing. Olivera Bubelínyho, PhD., ktorý sa s nami podelí o praktické skúsenosti s verejným vystupovaním, tvorbou pútavých prezentácií a efektívnou komunikáciou s publikom.
+                    </p>
+                    <span class="uppercase font-semibold text-[#031831] underline decoration-4">JE O 29. októbra 2026</span>
+                </div>
+            </div>
+            <div class="w-1/2">
+                <div class="relative bg-white w-[19vw] h-[50vh] mt-5 rounded-xl">
+                    <div class="absolute bottom-2 right-2">
+                        <svg class="size-12" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="25.8157" cy="25.5372" rx="20" ry="19.5" transform="rotate(-21.8233 25.8157 25.5372)" fill="white"/>
+                            <mask id="stroke0_129_66" fill="white">
+                            <path d="M44.3824 18.1023C48.386 28.1001 43.3189 39.5336 33.0648 43.6398C22.8107 47.746 11.2526 42.9699 7.24904 32.9722C3.24551 22.9744 8.31259 11.5409 18.5667 7.43471C28.8208 3.32853 40.3789 8.10458 44.3824 18.1023Z"/>
+                            </mask>
+                            <path d="M44.3824 18.1023C48.386 28.1001 43.3189 39.5336 33.0648 43.6398C22.8107 47.746 11.2526 42.9699 7.24904 32.9722C3.24551 22.9744 8.31259 11.5409 18.5667 7.43471C28.8208 3.32853 40.3789 8.10458 44.3824 18.1023Z" stroke-width="2" stroke="black" mask="url(#stroke0_129_66)"/>
+                            <path d="M13.0536 31.1755C15.2573 30.3102 17.461 29.4449 20.9622 28.1206C24.4633 26.7964 29.195 25.0393 31.8195 24.0918C34.4441 23.1442 34.818 23.0593 34.9028 22.8937C34.9876 22.7282 34.7718 22.4846 34.4582 22.2777C33.6911 21.7718 32.7674 21.4691 31.8733 21.296M31.8733 21.296C30.3143 20.9941 28.8452 21.0861 28.4533 21.1807C28.3139 21.2144 28.1586 21.1946 28.0099 21.2009C27.8612 21.2073 27.7216 21.2295 29.0164 21.2547C29.699 21.2679 30.7815 21.2818 31.8733 21.296ZM31.8733 21.296C32.8526 21.3088 33.8394 21.3218 34.5521 21.3349C36.258 21.3663 36.6281 21.4591 36.8533 21.5884C37.4963 21.9577 34.9729 23.2926 33.2439 25.0418C32.1546 26.1439 30.7476 27.7895 29.9067 28.7785C29.0659 29.7676 28.8627 30.078 28.9383 30.1797C29.3743 30.1649 30.1739 29.825 31.6778 28.5678C32.7534 27.5306 34.4635 25.6827 36.3758 23.6016" stroke-linecap="round" stroke-linejoin="round" stroke="#050505"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-[50vw] h-[55vh] bg-orange-300 rounded-3xl flex justify-between">
+            <div class="p-5 w-[550px] flex flex-col justify-between">
+                <h3 class="text-3xl font-dm font-bold tracking-[1%] leading-[120%] text-[#031831]">
+                    SmartLab Talks
+                </h3>
+                <div class="space-y-5">
+                    <p class="leading-[100%] text-[#031831] mb-5">
+                        Spoznaj SmartLab UCM & Trnava – priestor, kde sa nápady menia na skutočné projekty! Príď na SmartLab Talks s Radoslavom Drobným a objav možnosti, ktoré SmartLab ponúka študentom, inovátorom a všetkým, ktorí chcú rozvíjať svoje nápady a spolupracovať s odborníkmi z praxe.
+                    </p>
+                    <span class="uppercase font-semibold text-[#031831] underline decoration-4">JE O 15. októbra 2026</span>
+                </div>
+            </div>
+            <div class="w-1/2">
+                <div class="relative bg-white w-[19vw] h-[50vh] mt-5 rounded-xl">
+                    <div class="absolute bottom-2 right-2">
+                        <svg class="size-12" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="25.8157" cy="25.5372" rx="20" ry="19.5" transform="rotate(-21.8233 25.8157 25.5372)" fill="white"/>
+                            <mask id="stroke0_129_66" fill="white">
+                            <path d="M44.3824 18.1023C48.386 28.1001 43.3189 39.5336 33.0648 43.6398C22.8107 47.746 11.2526 42.9699 7.24904 32.9722C3.24551 22.9744 8.31259 11.5409 18.5667 7.43471C28.8208 3.32853 40.3789 8.10458 44.3824 18.1023Z"/>
+                            </mask>
+                            <path d="M44.3824 18.1023C48.386 28.1001 43.3189 39.5336 33.0648 43.6398C22.8107 47.746 11.2526 42.9699 7.24904 32.9722C3.24551 22.9744 8.31259 11.5409 18.5667 7.43471C28.8208 3.32853 40.3789 8.10458 44.3824 18.1023Z" stroke-width="2" stroke="black" mask="url(#stroke0_129_66)"/>
+                            <path d="M13.0536 31.1755C15.2573 30.3102 17.461 29.4449 20.9622 28.1206C24.4633 26.7964 29.195 25.0393 31.8195 24.0918C34.4441 23.1442 34.818 23.0593 34.9028 22.8937C34.9876 22.7282 34.7718 22.4846 34.4582 22.2777C33.6911 21.7718 32.7674 21.4691 31.8733 21.296M31.8733 21.296C30.3143 20.9941 28.8452 21.0861 28.4533 21.1807C28.3139 21.2144 28.1586 21.1946 28.0099 21.2009C27.8612 21.2073 27.7216 21.2295 29.0164 21.2547C29.699 21.2679 30.7815 21.2818 31.8733 21.296ZM31.8733 21.296C32.8526 21.3088 33.8394 21.3218 34.5521 21.3349C36.258 21.3663 36.6281 21.4591 36.8533 21.5884C37.4963 21.9577 34.9729 23.2926 33.2439 25.0418C32.1546 26.1439 30.7476 27.7895 29.9067 28.7785C29.0659 29.7676 28.8627 30.078 28.9383 30.1797C29.3743 30.1649 30.1739 29.825 31.6778 28.5678C32.7534 27.5306 34.4635 25.6827 36.3758 23.6016" stroke-linecap="round" stroke-linejoin="round" stroke="#050505"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
