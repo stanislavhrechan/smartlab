@@ -18,9 +18,9 @@
                 <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
             </div>
             <div>
-                <x-input-label for="last_name" :value="__('Priezvisko*')" />
-                <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname"  oninput="handleRegisterInput()"/>
-                <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+                <x-input-label for="surname" :value="__('Priezvisko*')" />
+                <x-text-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname"  oninput="handleRegisterInput()"/>
+                <x-input-error :messages="$errors->get('surname')" class="mt-2" />
             </div>
         </div>
         
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function handleRegisterInput() {
     const fist_name = document.getElementById('first_name').value.trim();
-    const last_name = document.getElementById('last_name').value.trim();
+    const last_name = document.getElementById('surname').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
 

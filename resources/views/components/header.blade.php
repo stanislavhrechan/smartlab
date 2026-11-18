@@ -1,4 +1,23 @@
-<header
+<header class="site-header">
+    <nav class="nav wrap" aria-label="Hlavná navigácia">
+        <a class="brand" href="index.html"><img class="brand-logo" src="{{asset('/image/logo.png')}}" alt="SmartLab UCM &amp; Trnava"></a>
+        <div class="links" id="site-links">
+        <a class="{{ request()->routeIs('home') ? 'is-active' : '' }} font-semibold" href="{{route('home')}}" aria-current="page">Domov</a>
+        <a class="{{ request()->routeIs('about') ? 'is-active' : '' }} font-semibold" href="{{route('about')}}">O SmartLabe</a>
+        <a class="{{ request()->routeIs('aktualits') ? 'is-active' : '' }} font-semibold" href="{{route('aktualits')}}">Aktuality</a>
+        <a href="{{route('projekts')}}" class="{{ request()->routeIs('projekts') ? 'is-active' : '' }} font-semibold">Projekty</a>
+        <a class="{{ request()->routeIs('podujatia') ? 'is-active' : '' }} font-semibold" href="{{route('podujatia')}}">Podujatia</a>
+        <a class="{{ request()->routeIs('partneri') ? 'is-active' : '' }} font-semibold" href="{{route('partneri')}}">Partneri</a>
+        <a class="{{ request()->routeIs('kontakt') ? 'is-active' : '' }} font-semibold" href="{{route('kontakt')}}">Kontakt</a>
+        <a class="{{ request()->routeIs('studenti') ? 'is-active' : '' }} font-semibold" href="{{route('studenti')}}">Študenti</a>
+        <a class="links-login" href="{{route('login')}}">Prihlásiť</a>
+        </div>
+        <a class="btn btn-ink btn-small btn-login" href="{{route('login')}}">Prihlásiť</a>
+        <button class="menu-button" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="site-links">☰</button>
+    </nav>
+</header>
+
+<!-- <header
     class="
         hero-header absolute top-0 left-0 z-50 w-full 
         transition-colors duration-500"
@@ -49,7 +68,7 @@
                                 text-black
                                 hover:underline
                         "
-                        >Ako používať laboratórium</a>
+                        >O SmartLabe</a>
                     </div>
 
 
@@ -93,4 +112,4 @@
             </button>
         </div>
     </div>
-</header>
+</header> -->

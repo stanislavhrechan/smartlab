@@ -18,10 +18,8 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased relative">
-        <div class="absolute inset-0 z-0">
-            <img src="./image/bg_3.jpg" fetchpriority="high" class="w-full h-full object-cover" alt="">
-        </div>
+    <body class="font-sans text-gray-900 antialiased relative bg-[#2F938D]">
+        
         <div class="relative z-10 min-h-screen bg-gray-100/65 pt-6 px-5 md:px-20 flex flex-col justify-center items-center sm:pt-0">
             <div class="w-full max-w-md mt-6 px-6 py-4 bg-white shadow-lg overflow-hidden rounded-lg">
                 {{ $slot }}

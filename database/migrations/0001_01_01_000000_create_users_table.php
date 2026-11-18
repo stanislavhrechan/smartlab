@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('utype')->default('USR')->commet('ADM | PARTNER | STUDENT');
+            $table->string('utype')->default('USR')->commet('ADM | PARTNER');
             $table->string('name');
             $table->string('surname')->nullable();
             $table->string('email')->unique();
