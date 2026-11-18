@@ -11,7 +11,7 @@
                 ['route' => 'projects', 'label' => 'Projekty'],
                 ['route' => 'events', 'label' => 'Podujatia'],
                 ['route' => 'partners', 'label' => 'Partneri'],
-                ['route' => 'contacts', 'label' => 'Kontakt'],
+                ['route' => 'reservations.create', 'label' => 'Rezervácie'],
                 ['route' => 'students', 'label' => 'Študenti'],
             ] as $item)
                 <a class="{{ request()->routeIs($item['route']) ? 'is-active' : '' }}"

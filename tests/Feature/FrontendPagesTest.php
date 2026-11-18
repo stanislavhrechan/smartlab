@@ -45,6 +45,22 @@ test('news and projects pages share an aligned listing hero', function () {
     }
 });
 
+test('header links to reservations while contact remains in the footer', function () {
+    $content = $this->get(route('about'))->assertOk()->getContent();
+    $headerEnd = strpos($content, '</header>');
+    $footerStart = strpos($content, '<footer class="site-footer">');
+    $header = substr($content, 0, $headerEnd);
+    $footer = substr($content, $footerStart);
+
+    expect($header)
+        ->toContain(route('reservations.create'))
+        ->toContain('Rezervácie')
+        ->not->toContain('>Kontakt</a>');
+    expect($footer)
+        ->toContain(route('contacts'))
+        ->toContain('Kontakt');
+});
+
 test('about value cards use their local value icons', function () {
     $this->get(route('about'))
         ->assertOk()
@@ -52,6 +68,24 @@ test('about value cards use their local value icons', function () {
         ->assertSee('images/icons/handshake.svg')
         ->assertSee('images/icons/badge-check.svg')
         ->assertSee('images/icons/users-round.svg');
+});
+
+test('about room showcase keeps both large floor galleries and links to reservations', function () {
+    $response = $this->get(route('about'));
+    $content = $response->getContent();
+
+    $response->assertOk()
+        ->assertSee('1. poschodie')
+        ->assertSee('2. poschodie')
+        ->assertSee('Učebne a priestory určené pre výučbu, workshopy a skupinové aktivity.')
+        ->assertSee('Kancelárske a pracovné priestory SmartLabu pre výskum, spoluprácu a projektové aktivity.')
+        ->assertSee(route('reservations.create'), false)
+        ->assertSee('Rezervovať miestnosť')
+        ->assertDontSee('Počítačová učebňa')
+        ->assertDontSee('Vybavenie');
+
+    expect(substr_count($content, 'data-gallery-carousel'))->toBe(2);
+    expect(substr_count($content, 'class="btn btn-ink btn-large room-reservation-cta"'))->toBe(2);
 });
 
 test('about ideas cards share the responsive grid and background class', function () {

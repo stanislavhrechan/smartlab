@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoomReservationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,16 +20,17 @@ Route::view('/podujatia', 'pages.events')->name('events');
 Route::view('/partneri', 'pages.partners')->name('partners');
 Route::view('/kontakty', 'pages.contacts')->name('contacts');
 Route::view('/studenti', 'pages.students')->name('students');
+Route::get('/rezervacie/dostupnost', [RoomReservationController::class, 'availability'])->name('reservations.availability');
+Route::get('/rezervacie', [RoomReservationController::class, 'create'])->name('reservations.create');
+Route::post('/rezervacie', [RoomReservationController::class, 'store'])
+    ->middleware('throttle:10,1')
+    ->name('reservations.store');
 
 // Route::('/about', function() {
 //     return view('home.about');
 // });
 
-Route::get('/rezervation/rooms', function () {
-    return view('rezervations.index');
-});
-
-
+Route::redirect('/rezervation/rooms', '/rezervacie');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

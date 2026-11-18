@@ -118,6 +118,136 @@ document.addEventListener('DOMContentLoaded', () => {
             desktopAutoplay.addEventListener('change', restartAutoplay);
             restartAutoplay();
         });
+
+    };
+
+    // Reservation page: floor filters, room preselection and date-specific availability.
+    const initReservationPage = () => {
+        const page = document.querySelector('[data-reservation-page]');
+        if (!page) return;
+
+        const form = page.querySelector('[data-reservation-form]');
+        const roomSelect = page.querySelector('#room');
+        const dateInput = page.querySelector('#date');
+        const startInput = page.querySelector('#start_time');
+        const endInput = page.querySelector('#end_time');
+        const grid = page.querySelector('[data-availability-grid]');
+        const status = page.querySelector('[data-availability-status]');
+        if (!form || !roomSelect || !dateInput || !startInput || !endInput || !grid || !status) return;
+
+        const cards = [...page.querySelectorAll('[data-room-card]')];
+        const filters = [...page.querySelectorAll('[data-room-floor-filter]')];
+        let availabilityRequest = null;
+
+        const updateSelectedRoom = () => {
+            cards.forEach((card) => {
+                const selected = card.dataset.roomKey === roomSelect.value;
+                card.classList.toggle('is-selected', selected);
+                const button = card.querySelector('[data-select-room]');
+                if (!button) return;
+                button.setAttribute('aria-pressed', String(selected));
+                button.textContent = selected ? 'Vybraná miestnosť' : 'Vybrať miestnosť';
+            });
+        };
+
+        const loadAvailability = async () => {
+            if (!roomSelect.value || !dateInput.value) return;
+            if (availabilityRequest) availabilityRequest.abort();
+            availabilityRequest = new AbortController();
+            grid.replaceChildren();
+            status.removeAttribute('role');
+            status.textContent = 'Načítava sa dostupnosť…';
+
+            const url = new URL(page.dataset.availabilityUrl, window.location.href);
+            url.searchParams.set('room', roomSelect.value);
+            url.searchParams.set('date', dateInput.value);
+
+            try {
+                const response = await fetch(url, {
+                    headers: { Accept: 'application/json' },
+                    signal: availabilityRequest.signal
+                });
+                if (!response.ok) throw new Error(`Dostupnosť sa nepodarilo načítať (${response.status}).`);
+
+                const availability = await response.json();
+                if (!Array.isArray(availability.slots)) throw new Error('Odpoveď dostupnosti nemá platný formát.');
+
+                availability.slots.forEach((slot) => {
+                    if (slot.status !== 'free' && slot.status !== 'occupied') {
+                        throw new Error('Časový interval má neznámy stav.');
+                    }
+
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = `availability-slot is-${slot.status}`;
+                    button.disabled = slot.status === 'occupied';
+                    button.setAttribute('aria-label', `${slot.status === 'free' ? 'Voľné' : 'Obsadené'} ${slot.start} až ${slot.end}`);
+                    button.innerHTML = `<span>${slot.start} – ${slot.end}</span><strong>${slot.status === 'free' ? 'Voľné' : 'Obsadené'}</strong>`;
+
+                    if (slot.status === 'free') {
+                        button.addEventListener('click', () => {
+                            dateInput.value = availability.date;
+                            startInput.value = slot.start;
+                            endInput.value = slot.end;
+                            grid.querySelectorAll('.availability-slot.is-selected').forEach((selected) => {
+                                selected.classList.remove('is-selected');
+                            });
+                            button.classList.add('is-selected');
+                            status.textContent = `Vybraný termín: ${availability.date}, ${slot.start} – ${slot.end}.`;
+                            startInput.focus({ preventScroll: true });
+                        });
+                    }
+                    grid.append(button);
+                });
+
+                status.textContent = `Dostupnosť pre ${dateInput.value}.`;
+            } catch (error) {
+                if (error.name === 'AbortError') return;
+                console.error('Unable to load reservation availability.', error);
+                grid.replaceChildren();
+                status.setAttribute('role', 'alert');
+                status.textContent = 'Dostupnosť sa nepodarilo načítať. Skúste zmeniť miestnosť alebo dátum.';
+            }
+        };
+
+        const selectRoom = (roomKey, scrollToForm = false) => {
+            roomSelect.value = roomKey;
+            if (!roomSelect.value) return;
+            updateSelectedRoom();
+            loadAvailability();
+            if (scrollToForm) {
+                form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                roomSelect.focus({ preventScroll: true });
+            }
+        };
+
+        page.addEventListener('click', (event) => {
+            const button = event.target.closest('[data-select-room]');
+            if (!button) return;
+            selectRoom(button.dataset.selectRoom, true);
+        });
+
+        filters.forEach((filter) => {
+            filter.addEventListener('click', () => {
+                const selectedFloor = filter.dataset.roomFloorFilter;
+                filters.forEach((item) => {
+                    const selected = item === filter;
+                    item.classList.toggle('is-active', selected);
+                    item.setAttribute('aria-pressed', String(selected));
+                });
+                cards.forEach((card) => {
+                    card.hidden = selectedFloor !== 'all' && card.dataset.roomFloor !== selectedFloor;
+                });
+            });
+        });
+
+        roomSelect.addEventListener('change', () => {
+            updateSelectedRoom();
+            loadAvailability();
+        });
+        dateInput.addEventListener('change', loadAvailability);
+        updateSelectedRoom();
+        loadAvailability();
     };
 
     // Events page: month calendar + filters over any .event-item elements in the list.
@@ -487,6 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPartnersPage();
     initNewsPage();
     initEventsPage();
+    initReservationPage();
     if (body.classList.contains('page-about')) initAbout();
     initProjectsPage();
 });

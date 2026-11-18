@@ -182,71 +182,46 @@
 
         <hr>
 
-        <!-- Sekcia: Naše priestory -->
-        <section class="content-section">
+        @php
+            $roomFloors = config('smartlab.room_floors');
+        @endphp
+
+        <section class="content-section room-information-section" id="rooms">
             <small>NAŠE PRIESTORY</small>
             <h2>Naše priestory</h2>
-            <p class="intro-text">Pozri si, kde SmartLab funguje</p>
 
-            <section class="floor-section">
-                <h3>1. poschodie / 6 fotiek</h3>
-                <p>Učebne a priestory určené pre výučbu, workshopy a skupinové aktivity.</p>
-                <div class="gallery-carousel" data-gallery-carousel role="region" aria-roledescription="karusel" aria-label="Fotografie 1. poschodia">
-                    <div class="gallery-carousel__stage">
-                        <button class="gallery-carousel__button gallery-carousel__button--prev" type="button" data-gallery-prev aria-label="Predchádzajúca fotografia">←</button>
-                        <div class="gallery-carousel__viewport">
-                            <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 1 z 6">
-                                <img src="{{ asset('images/room-first-floor-01.jpg') }}" alt="Interiér 1. poschodia – fotografia 1">
-                            </figure>
-                            <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 2 z 6" hidden>
-                                <img src="{{ asset('images/room-first-floor-02.jpg') }}" alt="Interiér 1. poschodia – fotografia 2">
-                            </figure>
-                            <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 3 z 6" hidden>
-                                <img src="{{ asset('images/room-first-floor-03.jpg') }}" alt="Interiér 1. poschodia – fotografia 3">
-                            </figure>
-                            <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 4 z 6" hidden>
-                                <img src="{{ asset('images/room-first-floor-04.jpg') }}" alt="Interiér 1. poschodia – fotografia 4">
-                            </figure>
-                            <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 5 z 6" hidden>
-                                <img src="{{ asset('images/room-first-floor-05.jpg') }}" alt="Interiér 1. poschodia – fotografia 5">
-                            </figure>
-                            <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 6 z 6" hidden>
-                                <img src="{{ asset('images/room-first-floor-06.jpg') }}" alt="Interiér 1. poschodia – fotografia 6">
-                            </figure>
+            @foreach ($roomFloors as $floorKey => $floor)
+                <section class="floor-section room-floor-showcase" aria-labelledby="room-floor-title-{{ $floorKey }}">
+                    <h3 id="room-floor-title-{{ $floorKey }}">{{ $floor['label'] }}</h3>
+                    <p>{{ $floor['description'] }}</p>
+                    <div class="gallery-carousel" data-gallery-carousel role="region" aria-roledescription="karusel" aria-label="Fotografie {{ $floor['label'] }}">
+                        <div class="gallery-carousel__stage">
+                            <button class="gallery-carousel__button gallery-carousel__button--prev" type="button" data-gallery-prev aria-label="Predchádzajúca fotografia">←</button>
+                            <div class="gallery-carousel__viewport">
+                                @for ($photo = 1; $photo <= $floor['photo_count']; $photo++)
+                                    <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia {{ $photo }} z {{ $floor['photo_count'] }}" @if ($photo > 1) hidden @endif>
+                                        <img
+                                            src="{{ asset(sprintf('images/room-%s-floor-%02d.jpg', $floorKey, $photo)) }}"
+                                            alt="Interiér {{ $floor['label'] }} – fotografia {{ $photo }}">
+                                    </figure>
+                                @endfor
+                            </div>
+                            <button class="gallery-carousel__button gallery-carousel__button--next" type="button" data-gallery-next aria-label="Nasledujúca fotografia">→</button>
+                            <p class="gallery-carousel__status" data-gallery-status aria-live="off" aria-atomic="true">1 / {{ $floor['photo_count'] }}</p>
                         </div>
-                        <button class="gallery-carousel__button gallery-carousel__button--next" type="button" data-gallery-next aria-label="Nasledujúca fotografia">→</button>
-                        <p class="gallery-carousel__status" data-gallery-status aria-live="off" aria-atomic="true">1 / 6</p>
                     </div>
-                </div>
-            </section>
+                    @if ($loop->first)
+                        <div class="room-reservation-cta-wrap">
+                            <a class="btn btn-ink btn-large room-reservation-cta" href="{{ route('reservations.create') }}">
+                                Rezervovať miestnosť <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    @endif
+                </section>
+            @endforeach
 
-            <section class="floor-section">
-                <h3>2. poschodie / 5 fotiek</h3>
-                <p>Kancelárske a pracovné priestory SmartLabu pre výskum, spoluprácu a projektové aktivity.</p>
-                <div class="gallery-carousel" data-gallery-carousel role="region" aria-roledescription="karusel" aria-label="Fotografie 2. poschodia">
-                    <div class="gallery-carousel__stage">
-                        <button class="gallery-carousel__button gallery-carousel__button--prev" type="button" data-gallery-prev aria-label="Predchádzajúca fotografia">←</button>
-                        <div class="gallery-carousel__viewport">
-                            <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 1 z 5">
-                                <img src="{{ asset('images/room-second-floor-01.jpg') }}" alt="Interiér 2. poschodia – fotografia 1">
-                            </figure>
-                            <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 2 z 5" hidden>
-                                <img src="{{ asset('images/room-second-floor-02.jpg') }}" alt="Interiér 2. poschodia – fotografia 2">
-                            </figure>
-                            <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 3 z 5" hidden>
-                                <img src="{{ asset('images/room-second-floor-03.jpg') }}" alt="Interiér 2. poschodia – fotografia 3">
-                            </figure>
-                            <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 4 z 5" hidden>
-                                <img src="{{ asset('images/room-second-floor-04.jpg') }}" alt="Interiér 2. poschodia – fotografia 4">
-                            </figure>
-                            <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 5 z 5" hidden>
-                                <img src="{{ asset('images/room-second-floor-05.jpg') }}" alt="Interiér 2. poschodia – fotografia 5">
-                            </figure>
-                        </div>
-                        <button class="gallery-carousel__button gallery-carousel__button--next" type="button" data-gallery-next aria-label="Nasledujúca fotografia">→</button>
-                        <p class="gallery-carousel__status" data-gallery-status aria-live="off" aria-atomic="true">1 / 5</p>
-                    </div>
-                </div>
-            </section>
+            <a class="btn btn-ink btn-large room-reservation-cta" href="{{ route('reservations.create') }}">
+                Rezervovať miestnosť <span aria-hidden="true">→</span>
+            </a>
         </section>
 @endsection
