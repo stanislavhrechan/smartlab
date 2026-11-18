@@ -210,7 +210,7 @@
                             <p class="gallery-carousel__status" data-gallery-status aria-live="off" aria-atomic="true">1 / {{ $floor['photo_count'] }}</p>
                         </div>
                     </div>
-                    @if ($loop->first)
+                    @if ($loop->first || $loop->last)
                         <div class="room-reservation-cta-wrap">
                             <a class="btn btn-ink btn-large room-reservation-cta" href="{{ route('reservations.create') }}">
                                 Rezervovať miestnosť <span aria-hidden="true">→</span>
@@ -219,9 +219,5 @@
                     @endif
                 </section>
             @endforeach
-
-            <a class="btn btn-ink btn-large room-reservation-cta" href="{{ route('reservations.create') }}">
-                Rezervovať miestnosť <span aria-hidden="true">→</span>
-            </a>
         </section>
 @endsection

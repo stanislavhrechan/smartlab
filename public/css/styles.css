@@ -2583,7 +2583,7 @@ body.page-projects {
   line-height: 1.2;
 }
 :where(body.page-about) .room-reservation-cta {
-  margin-top: 22px;
+  margin-top: 96px;
   gap: 10px;
 }
 :where(body.page-about) .room-reservation-cta-wrap {
@@ -2645,11 +2645,13 @@ body.page-projects {
 }
 .page-site .reservation-room-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
   gap: 22px;
 }
 .page-site .reservation-room-card {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: var(--rule);
   border-radius: var(--radius);
@@ -2672,6 +2674,7 @@ body.page-projects {
 }
 .page-site .reservation-room-content {
   display: flex;
+  flex: 1;
   min-height: 340px;
   flex-direction: column;
   align-items: flex-start;
@@ -2993,6 +2996,9 @@ body.page-projects {
   .page-site .reservation-layout {
     grid-template-columns: 1fr;
   }
+  .page-site .reservation-room-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 @media (max-width: 600px) {
   :where(body.page-about) .room-information-section {
@@ -3008,6 +3014,9 @@ body.page-projects {
   .page-site .room-floor-filter {
     flex: 1;
     padding-inline: 10px;
+  }
+  .page-site .reservation-room-grid {
+    grid-template-columns: 1fr;
   }
   .page-site .reservation-room-content {
     min-height: 0;

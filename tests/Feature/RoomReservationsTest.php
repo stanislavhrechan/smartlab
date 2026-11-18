@@ -6,13 +6,39 @@ test('reservation page uses the shared layout and preselects the requested room'
         ->assertSee('site-header')
         ->assertSee('site-footer')
         ->assertSee('name="room"', false)
-        ->assertSee('Zasadacia miestnosť na 1. poschodí')
+        ->assertSee('Zasadačka na 1. poschodí')
         ->assertSee('selected', false)
         ->assertSee(route('reservations.store'), false)
         ->assertSee('data-room-card', false)
         ->assertSee('data-select-room="meeting-room-first"', false)
         ->assertSee('data-availability-grid', false)
         ->assertSee('Ukážkový rozvrh');
+});
+
+test('reservation catalogue lists the six reference rooms with floor, capacity labels, and equipment details', function () {
+    $response = $this->get(route('reservations.create'));
+    $content = $response->getContent();
+
+    $response->assertOk()
+        ->assertSee('Počítačová učebňa')
+        ->assertSee('Zasadačka na 1. poschodí')
+        ->assertSee('Seminárna miestnosť')
+        ->assertSee('UCPCSI 2c')
+        ->assertSee('LABSL - Laboratórium virtuálnej reality')
+        ->assertSee('Malá zasadačia miestnosť')
+        ->assertSee('Počítačová stanica')
+        ->assertSee('Výškovo nastaviteľný stôl')
+        ->assertSee('Rokovací stôl')
+        ->assertSee('HTC Vive Pro')
+        ->assertSee('Valve Index Base Station')
+        ->assertSee('Vybavenie zatiaľ nie je uvedené.');
+
+    expect(substr_count($content, 'data-room-card'))->toBe(6);
+    expect(substr_count($content, 'Kapacita: neuvedená'))->toBe(6);
+    expect(substr_count($content, 'data-room-floor="first"'))->toBe(3);
+    expect(substr_count($content, 'data-room-floor="second"'))->toBe(3);
+    expect(strpos($content, 'data-room-key="labsl-vr"'))->toBeLessThan(strpos($content, 'images/room-second-floor-03.jpg'));
+    expect(strpos($content, 'data-room-key="small-meeting-room"'))->toBeLessThan(strpos($content, 'images/room-second-floor-02.jpg'));
 });
 
 test('availability endpoint returns free and occupied intervals for the requested room and date', function () {
@@ -30,6 +56,19 @@ test('availability endpoint returns free and occupied intervals for the requeste
         ->assertJsonPath('slots.0.status', 'free')
         ->assertJsonPath('slots.1.start', '10:00')
         ->assertJsonPath('slots.1.status', 'occupied');
+});
+
+test('availability endpoint uses the selected second-floor room schedule', function () {
+    $date = now()->startOfWeek()->addWeek()->toDateString();
+
+    $this->getJson(route('reservations.availability', [
+        'room' => 'ucpcsi-2c',
+        'date' => $date,
+    ]))
+        ->assertOk()
+        ->assertJsonPath('room', 'ucpcsi-2c')
+        ->assertJsonPath('slots.0.start', '09:00')
+        ->assertJsonPath('slots.0.status', 'occupied');
 });
 
 test('availability endpoint rejects unknown rooms and past dates', function () {

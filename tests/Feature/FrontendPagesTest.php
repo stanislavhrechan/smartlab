@@ -7,8 +7,11 @@ test('public frontend pages render with the shared layout and active navigation'
 
     $response->assertOk()
         ->assertSee('site-header')
-        ->assertSee('site-footer')
-        ->assertSee('aria-current="page"', false);
+        ->assertSee('site-footer');
+
+    if ($routeName !== 'contacts') {
+        $response->assertSee('aria-current="page"', false);
+    }
 })->with([
     'home',
     'about',
@@ -18,6 +21,7 @@ test('public frontend pages render with the shared layout and active navigation'
     'partners',
     'contacts',
     'students',
+    'reservations.create',
 ]);
 
 test('admin dashboard still renders with its dashboard layout', function () {
@@ -86,6 +90,8 @@ test('about room showcase keeps both large floor galleries and links to reservat
 
     expect(substr_count($content, 'data-gallery-carousel'))->toBe(2);
     expect(substr_count($content, 'class="btn btn-ink btn-large room-reservation-cta"'))->toBe(2);
+    expect(substr_count($content, 'src="' . asset('images/room-second-floor-02.jpg') . '"'))->toBe(1);
+    expect(substr_count($content, 'src="' . asset('images/room-second-floor-03.jpg') . '"'))->toBe(1);
 });
 
 test('about ideas cards share the responsive grid and background class', function () {

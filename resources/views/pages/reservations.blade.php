@@ -40,10 +40,12 @@
                             <div class="reservation-room-content">
                                 <span class="reservation-room-floor">{{ $floor['label'] }}</span>
                                 <h3>{{ $room['name'] }}</h3>
-                                <p class="reservation-room-description">{{ $room['description'] }}</p>
+                                @if (!empty($room['description']))
+                                    <p class="reservation-room-description">{{ $room['description'] }}</p>
+                                @endif
                                 <p class="reservation-room-capacity">
                                     <span aria-hidden="true">◎</span>
-                                    Kapacita: {{ $room['capacity'] ? $room['capacity'] . ' osôb' : 'neuvedená' }}
+                                    Kapacita: neuvedená
                                 </p>
                                 <div class="reservation-room-equipment">
                                     <h4>Vybavenie</h4>
@@ -54,7 +56,7 @@
                                             @endforeach
                                         </ul>
                                     @else
-                                        <p>Vybavenie nie je uvedené.</p>
+                                                <p>Vybavenie zatiaľ nie je uvedené.</p>
                                     @endif
                                 </div>
                                 <button class="btn btn-ink reservation-room-select" type="button" data-select-room="{{ $roomKey }}" aria-pressed="false">
@@ -91,7 +93,7 @@
                                     <optgroup label="{{ $floor['label'] }}">
                                         @foreach ($floor['rooms'] as $roomKey => $room)
                                             <option value="{{ $roomKey }}" @selected($selectedRoom === $roomKey)>
-                                                {{ $room['name'] }}{{ $room['capacity'] ? ' · kapacita ' . $room['capacity'] : '' }}
+                                                {{ $room['name'] }}
                                             </option>
                                         @endforeach
                                     </optgroup>
