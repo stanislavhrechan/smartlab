@@ -1,36 +1,10 @@
-<!doctype html>
-<html lang="sk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-  <title>Projekty | SmartLab</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body class="page-projects">
-  <header class="site-header">
-    <nav class="nav container" aria-label="Hlavná navigácia">
-      <a class="brand" href="index.html"><img class="brand-logo" src="assets/smartlab-logo.png" alt="SmartLab UCM &amp; Trnava"></a>
-      <div class="links" id="site-links">
-        <a href="index.html">Domov</a>
-        <a href="o-smart.html">O SmartLabe</a>
-        <a href="aktuality.html">Aktuality</a>
-        <a class="is-active" href="projekty.html" aria-current="page">Projekty</a>
-        <a href="podujatia.html">Podujatia</a>
-        <a href="partneri.html">Partneri</a>
-        <a href="kontakty.html">Kontakt</a>
-        <a href="studenti.html">Študenti</a>
-        <a class="links-login" href="/prihlasenie/">Prihlásiť</a>
-      </div>
-      <a class="btn btn-ink btn-small btn-login" href="/prihlasenie/">Prihlásiť</a>
-      <button class="menu-button" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="site-links">☰</button>
-    </nav>
-  </header>
-  <main>
-    <section class="hero container">
+@extends('layouts.app')
+
+@section('title', 'Projekty')
+@section('body-class', 'page-projects')
+
+@section('content')
+<section class="hero container">
       <div class="kicker">SMARTLAB UCM &amp; TRNAVA</div>
       <h1>Projekty</h1>
       <p class="hero-copy">Prehľad projektov a pilotných riešení SmartLabu. Projekty budú postupne dopĺňané.</p>
@@ -52,40 +26,4 @@
         <article class="project"><div class="project-visual visual-seven"></div><div class="project-info"><p class="project-tag">inovatívne obstarávanie</p><h3>Portál pre obstarávanie potravín</h3><p>Verejné obstarávanie je jedným z oporných pilierov pre transparentné hospodárenie s verejnými financiami. SmartLab podporuje efektívne a hospodárne riešenia.</p><a class="detail" href="#">Detail projektu ↗</a></div></article>
       </div>
     </section>
-  </main>
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-about">
-          <h2>SmartLab UCM &amp; Trnava</h2>
-          <p class="footer-copy">SmartLab je spoločný projekt Univerzity sv. Cyrila a Metoda v Trnave a mesta Trnava, zameraný na rozvoj digitálnych inovácií a spolupráce medzi akademickým prostredím, samosprávou a praxou.</p>
-          <div class="partners" id="partners">
-            <a class="partner" href="https://www.ucm.sk/" target="_blank" rel="noopener">UCM</a>
-            <a class="partner" href="https://fpv.ucm.sk" target="_blank" rel="noopener">FPV UCM</a>
-            <a class="partner" href="https://www.trnava.sk/" target="_blank" rel="noopener">Mesto Trnava</a>
-          </div>
-        </div>
-        <div class="footer-links">
-          <h3>Rýchle odkazy</h3>
-          <a href="projekty.html">Projekty <span>↗</span></a>
-          <a href="podujatia.html">Podujatia <span>↗</span></a>
-          <a href="partneri.html">Partneri <span>↗</span></a>
-          <a href="kontakty.html">Kontakt <span>↗</span></a>
-        </div>
-        <address class="contact">
-          <h3>Kontakt</h3>
-          <a class="contact-email" href="mailto:patrik.borsos@ucm.sk">patrik.borsos@ucm.sk ↗</a>
-          <p>Hlavná 5, 917 01 Trnava</p>
-          <a class="text-link" href="kontakty.html#ako-nas-najdete">Kde nás nájdete? Pozrite si obrázkového sprievodcu vstupu do SmartLabu.</a>
-        </address>
-      </div>
-      <div class="copyright">
-        <span>© 2026 SmartLab UCM &amp; Trnava. Všetky práva vyhradené.</span>
-        <strong>UCM × Mesto Trnava</strong>
-      </div>
-    </div>
-  </footer>
-  <dialog class="project-dialog" aria-labelledby="dialog-title"><button class="dialog-close" type="button" aria-label="Zavrieť detail">×</button><div class="dialog-content"><p class="project-tag" id="dialog-tag"></p><h2 id="dialog-title"></h2><p id="dialog-description"></p></div></dialog>
-  <script src="script.js"></script>
-</body>
-</html>
+@endsection

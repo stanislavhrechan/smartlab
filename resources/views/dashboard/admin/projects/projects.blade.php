@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 @section('title', 'Projekty - ' . auth()->user()->login . 'SmartLab')
 @section('content')
 <div class="mb-4 space-y-1 border-b border-black/15">

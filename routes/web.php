@@ -11,9 +11,14 @@ Route::get('/adm1n/dashboard', [AdminDashboard::class, 'index'])->name('dashboar
 Route::get('/adm1n/dashboard/users', [UsersController::class, 'index'])->name('dashboard.admin.users');
 Route::get('/adm1n/dashboard/projects', [ProjectsController::class, 'index'])->name('dashboard.admin.projects');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'pages.home')->name('home');
+Route::view('/o-smart', 'pages.about')->name('about');
+Route::view('/aktuality', 'pages.news')->name('news');
+Route::view('/projekty', 'pages.projects')->name('projects');
+Route::view('/podujatia', 'pages.events')->name('events');
+Route::view('/partneri', 'pages.partners')->name('partners');
+Route::view('/kontakty', 'pages.contacts')->name('contacts');
+Route::view('/studenti', 'pages.students')->name('students');
 
 // Route::('/about', function() {
 //     return view('home.about');

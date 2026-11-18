@@ -15,12 +15,12 @@
             <div>
                 <x-input-label for="first_name" :value="__('Meno*')" />
                 <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name"  oninput="handleRegisterInput()"/>
-                <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+                <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
             <div>
                 <x-input-label for="last_name" :value="__('Priezvisko*')" />
                 <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname"  oninput="handleRegisterInput()"/>
-                <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+                <x-input-error :messages="$errors->get('surname')" class="mt-2" />
             </div>
         </div>
         

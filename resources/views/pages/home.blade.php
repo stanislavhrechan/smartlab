@@ -1,51 +1,24 @@
-<!doctype html>
-<html lang="sk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-  <title>SmartLab UCM &amp; Trnava</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body class="page-site">
-  <header class="site-header">
-    <nav class="nav container" aria-label="Hlavná navigácia">
-      <a class="brand" href="index.html"><img class="brand-logo" src="assets/smartlab-logo.png" alt="SmartLab UCM &amp; Trnava"></a>
-      <div class="links" id="site-links">
-        <a class="is-active" href="index.html" aria-current="page">Domov</a>
-        <a href="o-smart.html">O SmartLabe</a>
-        <a href="aktuality.html">Aktuality</a>
-        <a href="projekty.html">Projekty</a>
-        <a href="podujatia.html">Podujatia</a>
-        <a href="partneri.html">Partneri</a>
-        <a href="kontakty.html">Kontakt</a>
-        <a href="studenti.html">Študenti</a>
-        <a class="links-login" href="/prihlasenie/">Prihlásiť</a>
-      </div>
-      <a class="btn btn-ink btn-small btn-login" href="/prihlasenie/">Prihlásiť</a>
-      <button class="menu-button" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="site-links">☰</button>
-    </nav>
-  </header>
+@extends('layouts.app')
 
-  <main>
-    <section class="hero" id="home">
+@section('title', 'SmartLab UCM & Trnava')
+@section('body-class', 'page-site')
+
+@section('content')
+<section class="hero" id="home">
       <div class="hero-inner container">
         <div class="hero-copy">
           <p class="eyebrow">Spoločný projekt UCM v Trnave a mesta Trnava</p>
           <h1>Inovačné laboratórium pre <span class="teal">digitálnu budúcnosť</span></h1>
           <p class="lead">SmartLab reaguje na rastúci dopyt po IT odborníkoch a podporuje štúdium informatiky prostredníctvom praktických projektov, spolupráce s odbornou praxou a rozvoja digitálnych kompetencií.</p>
           <div class="hero-actions">
-            <a class="btn btn-ink" href="projekty.html">Projekty ↗</a>
+            <a class="btn btn-ink" href="{{ route('projects') }}">Projekty ↗</a>
             <a class="btn btn-ghost" href="#contact">Kontaktujte nás</a>
           </div>
         </div>
         <div class="hero-art">
-          <img class="hero-sun" src="assets/yellow-circle.png" alt="">
-          <img class="hero-dot" src="assets/red-circle.png" alt="">
-          <img class="hero-campus" src="assets/hero-campus.png" alt="Človek pracujúci na streche mesta">
+          <img class="hero-sun" src="{{ asset('images/yellow-circle.png') }}" alt="">
+          <img class="hero-dot" src="{{ asset('images/red-circle.png') }}" alt="">
+          <img class="hero-campus" src="{{ asset('images/hero-campus.png') }}" alt="Človek pracujúci na streche mesta">
         </div>
       </div>
     </section>
@@ -60,22 +33,22 @@
         </div>
         <div class="pillars">
           <article class="pillar">
-            <img src="assets/yellow-circle.png" alt="">
+            <img src="{{ asset('images/yellow-circle.png') }}" alt="">
             <h3>Inovácie</h3>
             <p>Návrh a overovanie prototypov a pilotných riešení v digitálnych technológiách.</p>
           </article>
           <article class="pillar">
-            <img src="assets/collaboration.png" alt="">
+            <img src="{{ asset('images/collaboration.png') }}" alt="">
             <h3>Spolupráca</h3>
             <p>Spoločné projekty s firmami, samosprávou a akademickými tímami.</p>
           </article>
           <article class="pillar">
-            <img src="assets/education.png" alt="">
+            <img src="{{ asset('images/education.png') }}" alt="">
             <h3>Vzdelávanie</h3>
             <p>Workshopy, prednášky a projektová výučba so zameraním na prax.</p>
           </article>
           <article class="pillar">
-            <img src="assets/digital.png" alt="">
+            <img src="{{ asset('images/digital.png') }}" alt="">
             <h3>Digitálna transformácia</h3>
             <p>Metódy, nástroje a architektúry pre modernizáciu procesov a služieb.</p>
           </article>
@@ -90,22 +63,22 @@
             <h2>Aktuálne projekty</h2>
             <p class="section-lead">Domovská stránka zobrazuje len výber. Kompletný katalóg projektov budeme dopĺňať a publikovať na stránke Projekty.</p>
           </div>
-          <a class="btn btn-yellow" href="projekty.html">Projekty ↗</a>
+          <a class="btn btn-yellow" href="{{ route('projects') }}">Projekty ↗</a>
         </div>
         <div class="feature-cards">
-          <a class="feature-card" href="projekty.html">
+          <a class="feature-card" href="{{ route('projects') }}">
             <span class="tag tag-mint">IoT</span>
             <h3>Aplikácia pre podporu správy mestského ekosystému IoT</h3>
             <p>Množstvo IoT senzorov, ktoré mesto prevádzkuje, sa každým rokom zdvojnásobuje. Udržať si prehľad o účele, stave, spôsobe pripojenia a mieste inštalácie IoT je čoraz náročnejšie.</p>
             <span class="card-link">Detail projektu ↗</span>
           </a>
-          <a class="feature-card" href="projekty.html">
+          <a class="feature-card" href="{{ route('projects') }}">
             <span class="tag tag-yellow">data</span>
             <h3>GenT evidenčný systém</h3>
             <p>Dáta a štatistiky sú podkladom pre rozhodovanie založené na faktoch nielen na úrovni mesta, ale stávajú sa bežnou súčasťou pri riadení činností organizácií.</p>
             <span class="card-link">Detail projektu ↗</span>
           </a>
-          <a class="feature-card" href="projekty.html">
+          <a class="feature-card" href="{{ route('projects') }}">
             <span class="tag tag-mint">IoT</span>
             <h3>IoT teplomery</h3>
             <p>Bezpečnosť našich dát často závisí na bezpečnosti prostredia, v ktorom sú dáta ukladané a spracovávané. Monitorovanie teploty v serverovniach pomáha riešiť problémy včas.</p>
@@ -123,7 +96,7 @@
           </div>
           <div class="section-aside">
             <p class="section-lead">Výber najbližších plánovaných podujatí. Kompletný zoznam nájdeš v sekcii Podujatia.</p>
-            <a class="text-link" href="podujatia.html">Zobraziť všetky ↗</a>
+            <a class="text-link" href="{{ route('events') }}">Zobraziť všetky ↗</a>
           </div>
         </div>
         <div class="event-grid">
@@ -148,41 +121,4 @@
         <a class="btn btn-yellow btn-large" href="mailto:patrik.borsos@ucm.sk">Kontaktujte nás ↗</a>
       </div>
     </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-about">
-          <h2>SmartLab UCM &amp; Trnava</h2>
-          <p class="footer-copy">SmartLab je spoločný projekt Univerzity sv. Cyrila a Metoda v Trnave a mesta Trnava, zameraný na rozvoj digitálnych inovácií a spolupráce medzi akademickým prostredím, samosprávou a praxou.</p>
-          <div class="partners" id="partners">
-            <a class="partner" href="https://www.ucm.sk/" target="_blank" rel="noopener">UCM</a>
-            <a class="partner" href="https://fpv.ucm.sk" target="_blank" rel="noopener">FPV UCM</a>
-            <a class="partner" href="https://www.trnava.sk/" target="_blank" rel="noopener">Mesto Trnava</a>
-          </div>
-        </div>
-        <div class="footer-links">
-          <h3>Rýchle odkazy</h3>
-          <a href="projekty.html">Projekty <span>↗</span></a>
-          <a href="podujatia.html">Podujatia <span>↗</span></a>
-          <a href="partneri.html">Partneri <span>↗</span></a>
-          <a href="kontakty.html">Kontakt <span>↗</span></a>
-        </div>
-        <address class="contact">
-          <h3>Kontakt</h3>
-          <a class="contact-email" href="mailto:patrik.borsos@ucm.sk">patrik.borsos@ucm.sk ↗</a>
-          <p>Hlavná 5, 917 01 Trnava</p>
-          <a class="text-link" href="kontakty.html#ako-nas-najdete">Kde nás nájdete? Pozrite si obrázkového sprievodcu vstupu do SmartLabu.</a>
-        </address>
-      </div>
-      <div class="copyright">
-        <span>© 2026 SmartLab UCM &amp; Trnava. Všetky práva vyhradené.</span>
-        <strong>UCM × Mesto Trnava</strong>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+@endsection

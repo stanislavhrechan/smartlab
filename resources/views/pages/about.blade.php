@@ -1,37 +1,10 @@
-<!DOCTYPE html>
-<html lang="sk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    <title>O SmartLabe</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="page-about">
-  <header class="site-header">
-    <nav class="nav container" aria-label="Hlavná navigácia">
-      <a class="brand" href="index.html"><img class="brand-logo" src="assets/smartlab-logo.png" alt="SmartLab UCM &amp; Trnava"></a>
-      <div class="links" id="site-links">
-        <a href="index.html">Domov</a>
-        <a class="is-active" href="o-smart.html" aria-current="page">O SmartLabe</a>
-        <a href="aktuality.html">Aktuality</a>
-        <a href="projekty.html">Projekty</a>
-        <a href="podujatia.html">Podujatia</a>
-        <a href="partneri.html">Partneri</a>
-        <a href="kontakty.html">Kontakt</a>
-        <a href="studenti.html">Študenti</a>
-        <a class="links-login" href="/prihlasenie/">Prihlásiť</a>
-      </div>
-      <a class="btn btn-ink btn-small btn-login" href="/prihlasenie/">Prihlásiť</a>
-      <button class="menu-button" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="site-links">☰</button>
-    </nav>
-  </header>
+@extends('layouts.app')
 
-<main>
-     <section class="SmartLab-o_nas">
+@section('title', 'O SmartLabe')
+@section('body-class', 'page-about')
+
+@section('content')
+<section class="SmartLab-o_nas">
             <section class="hero-text">
                 <small>SMARTLAB UCM & TRNAVA</small>
                 <h1>O SmartLabe</h1>
@@ -39,7 +12,7 @@
             </section>
             
             <section class="SmartLab-images">
-                <img src="assets/smartlab.png" alt="smartlab">
+                <img src="{{ asset('images/smartlab.png') }}" alt="smartlab">
             </section>
         </section>
 
@@ -255,22 +228,22 @@
                         <button class="gallery-carousel__button gallery-carousel__button--prev" type="button" data-gallery-prev aria-label="Predchádzajúca fotografia">←</button>
                         <div class="gallery-carousel__viewport">
                             <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 1 z 6">
-                                <img src="assets/room-first-floor-01.jpg" alt="Interiér 1. poschodia – fotografia 1">
+                                <img src="{{ asset('images/room-first-floor-01.jpg') }}" alt="Interiér 1. poschodia – fotografia 1">
                             </figure>
                             <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 2 z 6" hidden>
-                                <img src="assets/room-first-floor-02.jpg" alt="Interiér 1. poschodia – fotografia 2">
+                                <img src="{{ asset('images/room-first-floor-02.jpg') }}" alt="Interiér 1. poschodia – fotografia 2">
                             </figure>
                             <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 3 z 6" hidden>
-                                <img src="assets/room-first-floor-03.jpg" alt="Interiér 1. poschodia – fotografia 3">
+                                <img src="{{ asset('images/room-first-floor-03.jpg') }}" alt="Interiér 1. poschodia – fotografia 3">
                             </figure>
                             <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 4 z 6" hidden>
-                                <img src="assets/room-first-floor-04.jpg" alt="Interiér 1. poschodia – fotografia 4">
+                                <img src="{{ asset('images/room-first-floor-04.jpg') }}" alt="Interiér 1. poschodia – fotografia 4">
                             </figure>
                             <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 5 z 6" hidden>
-                                <img src="assets/room-first-floor-05.jpg" alt="Interiér 1. poschodia – fotografia 5">
+                                <img src="{{ asset('images/room-first-floor-05.jpg') }}" alt="Interiér 1. poschodia – fotografia 5">
                             </figure>
                             <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 6 z 6" hidden>
-                                <img src="assets/room-first-floor-06.jpg" alt="Interiér 1. poschodia – fotografia 6">
+                                <img src="{{ asset('images/room-first-floor-06.jpg') }}" alt="Interiér 1. poschodia – fotografia 6">
                             </figure>
                         </div>
                         <button class="gallery-carousel__button gallery-carousel__button--next" type="button" data-gallery-next aria-label="Nasledujúca fotografia">→</button>
@@ -287,19 +260,19 @@
                         <button class="gallery-carousel__button gallery-carousel__button--prev" type="button" data-gallery-prev aria-label="Predchádzajúca fotografia">←</button>
                         <div class="gallery-carousel__viewport">
                             <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 1 z 5">
-                                <img src="assets/room-second-floor-01.jpg" alt="Interiér 2. poschodia – fotografia 1">
+                                <img src="{{ asset('images/room-second-floor-01.jpg') }}" alt="Interiér 2. poschodia – fotografia 1">
                             </figure>
                             <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 2 z 5" hidden>
-                                <img src="assets/room-second-floor-02.jpg" alt="Interiér 2. poschodia – fotografia 2">
+                                <img src="{{ asset('images/room-second-floor-02.jpg') }}" alt="Interiér 2. poschodia – fotografia 2">
                             </figure>
                             <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 3 z 5" hidden>
-                                <img src="assets/room-second-floor-03.jpg" alt="Interiér 2. poschodia – fotografia 3">
+                                <img src="{{ asset('images/room-second-floor-03.jpg') }}" alt="Interiér 2. poschodia – fotografia 3">
                             </figure>
                             <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 4 z 5" hidden>
-                                <img src="assets/room-second-floor-04.jpg" alt="Interiér 2. poschodia – fotografia 4">
+                                <img src="{{ asset('images/room-second-floor-04.jpg') }}" alt="Interiér 2. poschodia – fotografia 4">
                             </figure>
                             <figure class="gallery-slide" data-gallery-slide role="group" aria-roledescription="snímka" aria-label="Fotografia 5 z 5" hidden>
-                                <img src="assets/room-second-floor-05.jpg" alt="Interiér 2. poschodia – fotografia 5">
+                                <img src="{{ asset('images/room-second-floor-05.jpg') }}" alt="Interiér 2. poschodia – fotografia 5">
                             </figure>
                         </div>
                         <button class="gallery-carousel__button gallery-carousel__button--next" type="button" data-gallery-next aria-label="Nasledujúca fotografia">→</button>
@@ -308,41 +281,4 @@
                 </div>
             </section>
         </section>
-    </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-about">
-          <h2>SmartLab UCM &amp; Trnava</h2>
-          <p class="footer-copy">SmartLab je spoločný projekt Univerzity sv. Cyrila a Metoda v Trnave a mesta Trnava, zameraný na rozvoj digitálnych inovácií a spolupráce medzi akademickým prostredím, samosprávou a praxou.</p>
-          <div class="partners" id="partners">
-            <a class="partner" href="https://www.ucm.sk/" target="_blank" rel="noopener">UCM</a>
-            <a class="partner" href="https://fpv.ucm.sk" target="_blank" rel="noopener">FPV UCM</a>
-            <a class="partner" href="https://www.trnava.sk/" target="_blank" rel="noopener">Mesto Trnava</a>
-          </div>
-        </div>
-        <div class="footer-links">
-          <h3>Rýchle odkazy</h3>
-          <a href="projekty.html">Projekty <span>↗</span></a>
-          <a href="podujatia.html">Podujatia <span>↗</span></a>
-          <a href="partneri.html">Partneri <span>↗</span></a>
-          <a href="kontakty.html">Kontakt <span>↗</span></a>
-        </div>
-        <address class="contact">
-          <h3>Kontakt</h3>
-          <a class="contact-email" href="mailto:patrik.borsos@ucm.sk">patrik.borsos@ucm.sk ↗</a>
-          <p>Hlavná 5, 917 01 Trnava</p>
-          <a class="text-link" href="kontakty.html#ako-nas-najdete">Kde nás nájdete? Pozrite si obrázkového sprievodcu vstupu do SmartLabu.</a>
-        </address>
-      </div>
-      <div class="copyright">
-        <span>© 2026 SmartLab UCM &amp; Trnava. Všetky práva vyhradené.</span>
-        <strong>UCM × Mesto Trnava</strong>
-      </div>
-    </div>
-  </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+@endsection
