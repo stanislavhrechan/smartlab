@@ -24,28 +24,28 @@
             <h2>Priestor pre nápady.</h2>
             <p class="intro-text">Jeho vznik zároveň nadväzuje na podporu študijného odboru Informatika, ktorý je Ministerstvom školstva, výskumu, vývoja a mládeže SR zaradený medzi nedostatkové študijné odbory. Cieľom SmartLabu je prispieť k rozvoju digitálnych kompetencií, zvýšeniu záujmu o štúdium informatiky a vytváraniu priestoru pre inovácie a technologický rozvoj.</p>
 
-            <section class="grid">
-                <section class="card bg-teal">
+            <section class="grid idea-cards">
+                <section class="card idea-card">
                     <h3>Čo je SmartLab?</h3>
                     <p>SmartLab je inovačný ekosystém, ktorý prepája akademickú sféru s praxou a vytvára priestor pre spoluprácu vo výskume, vzdelávaní a implementácii moderných technológií.</p>
                 </section>
                 
-                <section class="card bg-yellow">
+                <section class="card idea-card">
                     <h3>Inovácie</h3>
                     <p>Podporujeme kreatívne nápady a inovačné riešenia v oblasti digitálnych technológií.</p>
                 </section>
 
-                <section class="card bg-red">
+                <section class="card idea-card">
                     <h3>Spolupráca</h3>
                     <p>Združujeme študentov, akademikov, firmy a samosprávu na spoločných projektoch.</p>
                 </section>
 
-                <section class="card bg-teal">
+                <section class="card idea-card">
                     <h3>Vzdelávanie</h3>
                     <p>Poskytujeme praktické vzdelávanie a workshopy zamerané na reálne potreby trhu.</p>
                 </section>
 
-                <section class="card bg-yellow">
+                <section class="card idea-card">
                     <h3>Rozvoj</h3>
                     <p>Podporujeme udržateľný rozvoj a digitálnu transformáciu regiónu.</p>
                 </section>
@@ -67,15 +67,7 @@
                         <h3>Otvorenosť</h3>
                         <p>Transparentné a predvídateľné fungovanie, ktoré podporuje medziodborovú výmenu poznatkov a prístupnosť aktivít pre definované cieľové skupiny.</p>
                     </div>
-                    <svg class="value-orbit" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
-                        <circle class="value-orbit-ring" cx="150" cy="150" r="148" />
-                        <circle class="value-orbit-ring" cx="150" cy="150" r="118" />
-                        <circle class="value-orbit-center" cx="150" cy="150" r="52" />
-                        <g class="value-orbit-dots">
-                            <circle class="value-orbit-dot" cx="150" cy="3" r="6" />
-                            <circle class="value-orbit-dot" cx="150" cy="297" r="6" />
-                        </g>
-                    </svg>
+                    <img class="value-icon" src="{{ asset('images/icons/door-open.svg') }}" alt="" aria-hidden="true">
                 </article>
 
                 <article class="card value-card value-card--yellow">
@@ -83,15 +75,7 @@
                         <h3>Partnerstvo</h3>
                         <p>Dlhodobá spolupráca založená na rovnosti, vzájomnom rešpekte a jasne vymedzených úlohách, právach a zodpovednostiach všetkých zapojených strán.</p>
                     </div>
-                    <svg class="value-orbit" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
-                        <circle class="value-orbit-ring" cx="150" cy="150" r="148" />
-                        <circle class="value-orbit-ring" cx="150" cy="150" r="118" />
-                        <circle class="value-orbit-center" cx="150" cy="150" r="52" />
-                        <g class="value-orbit-dots">
-                            <circle class="value-orbit-dot" cx="150" cy="3" r="6" />
-                            <circle class="value-orbit-dot" cx="150" cy="297" r="6" />
-                        </g>
-                    </svg>
+                    <img class="value-icon" src="{{ asset('images/icons/handshake.svg') }}" alt="" aria-hidden="true">
                 </article>
 
                 <article class="card value-card value-card--blue">
@@ -99,15 +83,7 @@
                         <h3>Kvalita</h3>
                         <p>Dôraz na odbornú úroveň, vecnú presnosť, metodickú primeranosť a dlhodobý prínos realizovaných aktivít aj ich výsledkov.</p>
                     </div>
-                    <svg class="value-orbit" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
-                        <circle class="value-orbit-ring" cx="150" cy="150" r="148" />
-                        <circle class="value-orbit-ring" cx="150" cy="150" r="118" />
-                        <circle class="value-orbit-center" cx="150" cy="150" r="52" />
-                        <g class="value-orbit-dots">
-                            <circle class="value-orbit-dot" cx="150" cy="3" r="6" />
-                            <circle class="value-orbit-dot" cx="150" cy="297" r="6" />
-                        </g>
-                    </svg>
+                    <img class="value-icon" src="{{ asset('images/icons/badge-check.svg') }}" alt="" aria-hidden="true">
                 </article>
 
                 <article class="card value-card value-card--red">
@@ -115,15 +91,7 @@
                         <h3>Spoločenská zodpovednosť</h3>
                         <p>Orientácia na verejný záujem, regionálne potreby a zodpovedné využívanie digitálnych a technologických riešení v podmienkach spoločenskej transformácie.</p>
                     </div>
-                    <svg class="value-orbit" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
-                        <circle class="value-orbit-ring" cx="150" cy="150" r="148" />
-                        <circle class="value-orbit-ring" cx="150" cy="150" r="118" />
-                        <circle class="value-orbit-center" cx="150" cy="150" r="52" />
-                        <g class="value-orbit-dots">
-                            <circle class="value-orbit-dot" cx="150" cy="3" r="6" />
-                            <circle class="value-orbit-dot" cx="150" cy="297" r="6" />
-                        </g>
-                    </svg>
+                    <img class="value-icon" src="{{ asset('images/icons/users-round.svg') }}" alt="" aria-hidden="true">
                 </article>
             </section>
         </section>

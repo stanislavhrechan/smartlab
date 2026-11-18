@@ -120,46 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Projects page
-    const initProjects = () => {
-        const filterLinks = document.querySelectorAll('[data-filter]');
-        const projects = document.querySelectorAll('.project');
-        const dialog = document.querySelector('.project-dialog');
-        const closeButton = document.querySelector('.dialog-close');
-        const dialogTag = document.querySelector('#dialog-tag');
-        const dialogTitle = document.querySelector('#dialog-title');
-        const dialogDescription = document.querySelector('#dialog-description');
-
-        filterLinks.forEach((filterLink) => {
-            filterLink.addEventListener('click', (event) => {
-                event.preventDefault();
-                const filter = filterLink.dataset.filter;
-                filterLinks.forEach((item) => item.removeAttribute('aria-current'));
-                filterLink.setAttribute('aria-current', 'true');
-                projects.forEach((project) => {
-                    const tag = project.querySelector('.project-tag').textContent.toLowerCase();
-                    const matches = filter === 'all' || (filter === 'obstaravanie' && tag.includes('obstarávanie')) || tag === filter;
-                    project.classList.toggle('is-hidden', !matches);
-                    project.classList.toggle('is-visible', matches);
-                });
-            });
-        });
-
-        document.querySelectorAll('.detail').forEach((detail) => {
-            detail.addEventListener('click', (event) => {
-                event.preventDefault();
-                const project = detail.closest('.project');
-                dialogTag.textContent = project.querySelector('.project-tag').textContent;
-                dialogTitle.textContent = project.querySelector('h3').textContent;
-                dialogDescription.textContent = project.querySelector('.project-info p:not(.project-tag)').textContent;
-                dialog.showModal();
-            });
-        });
-
-        closeButton.addEventListener('click', () => dialog.close());
-        dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
-    };
-
     // Events page: month calendar + filters over any .event-item elements in the list.
     // Items are plain markup: <li class="event-item" data-date="YYYY-MM-DD" data-form="..."
     // data-audience="studenti verejnost" data-partner="..."> (none are published yet).
@@ -282,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
     };
 
-    // Shared by the filterable news and partner pages: category chips with a
+    // Shared by the filterable news, project and partner pages: category chips with a
     // result count, plus a detail dialog that is filled by `fill(card)` and deep-linkable via #card-id.
     const initFilterableCards = ({ page, dialog, cards, openSelector, countSelector, fill }) => {
         const chips = [...page.querySelectorAll('.chip')];
@@ -334,6 +294,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const linked = cards.find((card) => card.dataset.id === window.location.hash.slice(1));
         if (linked) openCard(linked, false);
+    };
+
+    // Project cards use the same filter and detail-dialog behavior as the news cards.
+    const initProjectsPage = () => {
+        const page = document.querySelector('.projects-page');
+        const dialog = document.querySelector('.project-dialog');
+        if (!page || !dialog) return;
+
+        const part = (name) => dialog.querySelector(`[data-dialog-${name}]`);
+        initFilterableCards({
+            page,
+            dialog,
+            cards: [...page.querySelectorAll('.project-card')],
+            openSelector: '.project-open',
+            countSelector: '[data-project-count]',
+            fill: (card) => {
+                const tag = card.querySelector('.tag');
+
+                part('tag').className = tag.className;
+                part('tag').textContent = tag.textContent;
+                part('title').textContent = card.querySelector('.project-open').textContent.trim();
+                part('lead').textContent = card.querySelector('.news-excerpt').textContent.trim();
+                part('body').replaceChildren(card.querySelector('template').content.cloneNode(true));
+            }
+        });
     };
 
     // News page: each .news-card holds its full article in a <template>.
@@ -503,5 +488,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initNewsPage();
     initEventsPage();
     if (body.classList.contains('page-about')) initAbout();
-    if (body.classList.contains('page-projects')) initProjects();
+    initProjectsPage();
 });

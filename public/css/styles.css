@@ -637,6 +637,9 @@ body {
   gap: 48px;
   padding: 64px 0;
 }
+.page-site .listing-page-hero .page-hero-inner {
+  min-height: 322px;
+}
 .page-site .page-hero .lead {
   margin-top: 20px;
 }
@@ -1673,6 +1676,9 @@ body.page-site.dialog-open {
   .page-site .page-hero-inner {
     padding: 44px 0;
   }
+  .page-site .listing-page-hero .page-hero-inner {
+    min-height: 283px;
+  }
   .page-site .hero-inner {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1732,6 +1738,9 @@ body.page-site.dialog-open {
   .page-site .page-hero-art {
     display: none;
   }
+  .page-site .listing-page-hero .page-hero-inner {
+    min-height: 252px;
+  }
 }
 @media (max-width: 600px) {
   .page-site .news-grid,
@@ -1764,6 +1773,9 @@ body.page-site.dialog-open {
   .page-site .news-toolbar,
   .page-site .toolbar {
     align-items: flex-start;
+  }
+  .page-site .listing-page-hero .page-hero-inner {
+    min-height: 272px;
   }
   .page-site .news-card img {
     height: 190px;
@@ -1922,6 +1934,29 @@ body.page-about {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
+:where(body.page-about) .idea-card {
+  background-color: var(--about-teal);
+  color: var(--text-dark);
+}
+@media (min-width: 901px) {
+  :where(body.page-about) .idea-cards {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  :where(body.page-about) .idea-card {
+    grid-column: span 2;
+  }
+  :where(body.page-about) .idea-card:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+  :where(body.page-about) .idea-card:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+}
+@media (max-width: 600px) {
+  :where(body.page-about) .idea-cards {
+    grid-template-columns: 1fr;
+  }
+}
 :where(body.page-about) .card {
   padding: clamp(20px, 3vw, 30px);
   transition: transform 0.2s ease-in-out;
@@ -1961,8 +1996,6 @@ body.page-about {
   overflow: hidden;
   border-radius: 18px;
   color: var(--paper);
-  --orbit-center: var(--ink);
-  --orbit-angle: -8deg;
 }
 :where(body.page-about) .value-card--teal {
   background: var(--values-teal);
@@ -1970,47 +2003,27 @@ body.page-about {
 :where(body.page-about) .value-card--yellow {
   background: var(--values-yellow);
   color: var(--ink);
-  --orbit-center: var(--paper);
-  --orbit-angle: 8deg;
 }
 :where(body.page-about) .value-card--blue {
   background: var(--values-blue);
-  --orbit-angle: -12deg;
 }
 :where(body.page-about) .value-card--red {
   background: var(--values-red);
-  --orbit-angle: 4deg;
 }
 :where(body.page-about) .value-card-content {
   position: relative;
   z-index: 1;
   width: 55%;
 }
-:where(body.page-about) .value-orbit {
+:where(body.page-about) .value-icon {
   position: absolute;
   top: 50%;
-  right: 0;
-  width: clamp(140px, 26vw, 320px);
+  right: 4%;
+  width: clamp(108px, 18vw, 180px);
   height: auto;
+  opacity: 0.88;
   pointer-events: none;
   transform: translateY(-50%);
-}
-:where(body.page-about) .value-orbit-ring {
-  fill: none;
-  stroke: rgba(8, 27, 51, 0.24);
-  stroke-width: 1px;
-  vector-effect: non-scaling-stroke;
-}
-:where(body.page-about) .value-orbit-center {
-  fill: var(--orbit-center);
-}
-:where(body.page-about) .value-orbit-dot {
-  fill: var(--paper);
-}
-:where(body.page-about) .value-orbit-dots {
-  transform: rotate(var(--orbit-angle));
-  transform-box: view-box;
-  transform-origin: center;
 }
 :where(body.page-about) ul.objective-list {
   list-style: none;
@@ -2466,4 +2479,69 @@ body.page-projects {
   :where(body.page-projects) .hero-art {
     width: 330px;
   }
+}
+
+/* Project card artwork, displayed within the shared news-card layout. */
+.page-site .project-visual {
+  display: grid;
+  place-items: center;
+  height: 210px;
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+}
+.page-site .project-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-site .visual-one {
+  background: linear-gradient(145deg, #182f43, #d18a63 52%, #182738);
+}
+.page-site .visual-two {
+  background: linear-gradient(145deg, #fbfbf8, #dce4e0);
+  font-size: 44px;
+  letter-spacing: 0.08em;
+}
+.page-site .visual-two small,
+.page-site .visual-four small {
+  display: block;
+  font-size: 15px;
+  letter-spacing: 0;
+}
+.page-site .visual-three {
+  background: #13171d;
+  color: #82e0d1;
+  font: 20px/1.35 "Outfit", sans-serif;
+}
+.page-site .visual-three small {
+  font-size: 14px;
+}
+.page-site .visual-four {
+  background: linear-gradient(135deg, #fff4ec, #e6d5f1);
+  color: #884f98;
+  font-size: 74px;
+  line-height: 1;
+}
+.page-site .visual-five {
+  background: #e9eaec;
+  color: #0c9bd1;
+  font-size: 48px;
+}
+.page-site .visual-five .wan {
+  color: #09a8dd;
+  font-size: 25px;
+}
+.page-site .visual-six {
+  background: linear-gradient(150deg, var(--paper), #f8d950);
+  color: #135ba4;
+  font-size: 38px;
+}
+.page-site .visual-seven {
+  background: linear-gradient(160deg, var(--paper), #e7e5df);
+}
+.page-site .visual-seven::after {
+  content: "Dynamické nákupné systémy";
 }

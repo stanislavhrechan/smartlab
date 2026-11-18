@@ -4,7 +4,7 @@
 @section('body-class', 'page-site')
 
 @section('content')
-<section class="page-hero">
+<section class="page-hero listing-page-hero">
       <div class="page-hero-inner container">
         <div>
           <p class="eyebrow">SmartLab UCM &amp; Trnava</p>
