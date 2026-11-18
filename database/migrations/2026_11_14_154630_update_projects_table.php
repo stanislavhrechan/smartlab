@@ -12,38 +12,57 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->enum('type', [
-                'opportunity',
-                'informational'
-            ])->default('opportunity');
+            if (!Schema::hasColumn('projects', 'type')) {
+                $table->enum('type', ['opportunity', 'informational'])->default('opportunity');
+            }
 
-            $table->enum('reward_type', [
-                'none',
-                'fixed',
-                'negotiable'
-            ])->default('none');
+            if (!Schema::hasColumn('projects', 'reward_type')) {
+                $table->enum('reward_type', ['none', 'fixed', 'negotiable'])->default('none');
+            }
 
-            $table->decimal('reward_amount', 10, 2)->nullable();
+            if (!Schema::hasColumn('projects', 'reward_amount')) {
+                $table->decimal('reward_amount', 10, 2)->nullable();
+            }
 
-            $table->string('reward_currency', 3)->default('EUR');
+            if (!Schema::hasColumn('projects', 'reward_currency')) {
+                $table->string('reward_currency', 3)->default('EUR');
+            }
 
-            $table->boolean('accepts_applications')->default(false);
+            if (!Schema::hasColumn('projects', 'accepts_applications')) {
+                $table->boolean('accepts_applications')->default(false);
+            }
 
-            $table->string('short_description', 500)->nullable();
+            if (!Schema::hasColumn('projects', 'short_description')) {
+                $table->string('short_description', 500)->nullable();
+            }
 
-            $table->longText('full_description')->nullable();
+            if (!Schema::hasColumn('projects', 'full_description')) {
+                $table->longText('full_description')->nullable();
+            }
 
-            $table->longText('goals')->nullable();
+            if (!Schema::hasColumn('projects', 'goals')) {
+                $table->longText('goals')->nullable();
+            }
 
-            $table->longText('requirements_analysis')->nullable();
+            if (!Schema::hasColumn('projects', 'requirements_analysis')) {
+                $table->longText('requirements_analysis')->nullable();
+            }
 
-            $table->longText('solution_design')->nullable();
+            if (!Schema::hasColumn('projects', 'solution_design')) {
+                $table->longText('solution_design')->nullable();
+            }
 
-            $table->longText('data_collection_evaluation')->nullable();
+            if (!Schema::hasColumn('projects', 'data_collection_evaluation')) {
+                $table->longText('data_collection_evaluation')->nullable();
+            }
 
-            $table->longText('outputs')->nullable();
+            if (!Schema::hasColumn('projects', 'outputs')) {
+                $table->longText('outputs')->nullable();
+            }
 
-            $table->timestamp('published_at')->nullable();
+            if (!Schema::hasColumn('projects', 'published_at')) {
+                $table->timestamp('published_at')->nullable();
+            }
         });
     }
 
@@ -53,7 +72,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->dropColumn([
+            $columns = [
                 'type',
                 'reward_type',
                 'reward_amount',
@@ -67,7 +86,13 @@ return new class extends Migration
                 'data_collection_evaluation',
                 'outputs',
                 'published_at',
-            ]);
+            ];
+
+            foreach ($columns as $column) {
+                if (Schema::hasColumn('projects', $column)) {
+                    $table->dropColumn($column);
+                }
+            }
         });
     }
 };
